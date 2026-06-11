@@ -59,7 +59,7 @@ def fetch_candles_before(symbol: str, entry_dt: datetime, hours: int = 192) -> l
     """Hourly klines ENDING at the entry moment (8 days back). Returns oldest-first."""
     end_ms = int(entry_dt.replace(tzinfo=timezone.utc).timestamp() * 1000)
     r = httpx.get(
-        "https://api.binance.com/api/v3/klines",
+        "https://data-api.binance.vision/api/v3/klines",
         params={"symbol": symbol, "interval": "1h", "endTime": end_ms, "limit": hours},
         timeout=20,
     )

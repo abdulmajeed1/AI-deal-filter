@@ -91,11 +91,11 @@ async def fetch_market_context(symbol: str) -> dict | None:
     try:
         async with httpx.AsyncClient(timeout=10) as client:
             t24 = await client.get(
-                "https://api.binance.com/api/v3/ticker/24hr",
+                "https://data-api.binance.vision/api/v3/ticker/24hr",
                 params={"symbol": symbol},
             )
             kl = await client.get(
-                "https://api.binance.com/api/v3/klines",
+                "https://data-api.binance.vision/api/v3/klines",
                 params={"symbol": symbol, "interval": "1h", "limit": 24},
             )
             t24.raise_for_status()
